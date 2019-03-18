@@ -12,14 +12,13 @@ public static void mergesort(data,lo,hi){
   int rightLimit =hi;
   while(left<=leftLimit || right<=rightLimit){
     //Just in case one gets used up
-    if (left>leftLimit) {
+    if (left>leftLimit || data[right] > data[left]) {
       merger[left+right-lo-hi/2-1]=data[right]
       right++;
     }
-    if (right>rightLimit) {
+    if (right>rightLimit || data[left] >= data[rigt]) {
       merger[left+right-lo-hi/2-1]=data[left]
       left++;
     }
-    if(data[left]>)
   }
   }
