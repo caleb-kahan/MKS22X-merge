@@ -75,7 +75,15 @@ public class MergeDriver{
    if(Arrays.equals(start,result)){
      System.out.println("PASS Case "+name(type)+"\t array, size:"+start.length+"\t"+elapsedTime/1000.0+"sec ");
    }else{
+     printArray(start);
+     printArray(result);
      System.out.println("FAIL ! ERROR ! "+name(type)+" array, size:"+size+"  ERROR!");
    }
+ }
+ private static void printArray(int [] printer){
+   System.out.print("[");
+   for(int x: printer)
+    System.out.print(x + " , ");
+    System.out.println("]");
  }
 }
