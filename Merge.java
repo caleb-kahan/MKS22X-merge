@@ -22,13 +22,13 @@ public static void mergesort(int[]data,int lo,int hi){
       merger[left+right-lo-avr-1]=data[left];
       left++;
     }
-    else if (data[right] < data[left]) {
-      merger[left+right-lo-avr-1]=data[right];
-      right++;
-    }
     else if (data[left] <= data[right]) {
       merger[left+right-lo-avr-1]=data[left];
       left++;
+    }
+    else if (data[right] < data[left]) {
+      merger[left+right-lo-avr-1]=data[right];
+      right++;
     }
   }
   for(int i=lo;i<=hi;i++){
