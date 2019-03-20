@@ -31,5 +31,6 @@ public static void mergesort(int[]data,int lo,int hi){
       left++;
     }
   }
+  data=merger;
   }
 }
