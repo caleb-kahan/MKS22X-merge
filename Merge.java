@@ -32,7 +32,7 @@ public static void mergesort(int[]data,int lo,int hi){
     }
   }
   for(int i=lo;i<=hi;i++){
-    data[i]=merger[i];
+    data[i]=merger[i-lo];
   }
   }
 }
