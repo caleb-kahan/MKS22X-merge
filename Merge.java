@@ -1,6 +1,8 @@
+import java.util.Arrays;
 public class Merge{
 public static void mergesort(int[]data){
-  mergesort(data,0,data.length-1);
+  //mergesort(data,Arrays.copyOf(data,data.length),0, data.length-1);
+  mergesort(data,0, data.length-1);
 }
 private static void insertionSort(int [] data, int start, int end){
     for(int i =start+1;i<=end;i++){
@@ -21,7 +23,7 @@ private static void insertionSort(int [] data, int start, int end){
 
     }
   }
-public static void mergesort(int[]data,int lo,int hi){
+private static void mergesort(int[]data,int lo,int hi){
   if (hi-lo<40) {
     insertionSort(data,lo,hi);
   }
@@ -55,6 +57,42 @@ public static void mergesort(int[]data,int lo,int hi){
     }
     for(int i=lo;i<=hi;i++){
       data[i]=merger[i-lo];
+    }
+  }
+  }
+private static void mergesort(int[]data, int [] temp, int lo,int hi){
+  if (hi-lo<40) {
+    insertionSort(data,lo,hi);
+  }
+  else{
+    int avr = (lo+hi)/2;
+    mergesort(temp,lo,avr);
+    mergesort(temp,avr+1,hi);
+    int left =lo;
+    int right =avr+1;
+    int leftLimit = avr;
+    int rightLimit =hi;
+    while(left<=leftLimit || right<=rightLimit){
+      //Just in case one gets used up
+      if (left>leftLimit){
+        data[right]=temp[right];
+        right++;
+      }
+      else if (right>rightLimit){
+        data[left]=temp[left];
+        left++;
+      }
+      else if (data[left] <= data[right]) {
+        data[left]=temp[left];
+        left++;
+      }
+      else if (data[right] < data[left]) {
+        data[right]=temp[right];
+        right++;
+      }
+    }
+    for(int i=lo;i<=hi;i++){
+      temp[i]=data[i-lo];
     }
   }
   }
