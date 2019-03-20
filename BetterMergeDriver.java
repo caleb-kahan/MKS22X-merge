@@ -26,6 +26,8 @@ public static void main(String[]args){
         t2 = System.currentTimeMillis();
         btime+= t2 - t1;
         if(!Arrays.equals(data1,data2)){
+	  //printArray(data1);
+	  printArray(data2);
           System.out.println("FAIL TO SORT!");
           System.exit(0);
         }
@@ -35,4 +37,10 @@ public static void main(String[]args){
     System.out.println();
   }
 }
+private static void printArray(int [] printer){
+   System.out.print("[");
+   for(int x: printer)
+    System.out.print(x + " , ");
+    System.out.println("]");
+ }
 }

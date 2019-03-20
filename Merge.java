@@ -1,8 +1,8 @@
 import java.util.Arrays;
 public class Merge{
 public static void mergesort(int[]data){
-  //mergesort(data,Arrays.copyOf(data,data.length),0, data.length-1);
-  mergesort(data,0, data.length-1);
+  mergesort(data,Arrays.copyOf(data,data.length),0, data.length-1);
+  //mergesort(data,0, data.length-1);
 }
 private static void insertionSort(int [] data, int start, int end){
     for(int i =start+1;i<=end;i++){
@@ -66,8 +66,8 @@ private static void mergesort(int[]data, int [] temp, int lo,int hi){
   }
   else{
     int avr = (lo+hi)/2;
-    mergesort(temp,lo,avr);
-    mergesort(temp,avr+1,hi);
+    mergesort(temp, data, lo,avr);
+    mergesort(temp, data, avr+1,hi);
     int left =lo;
     int right =avr+1;
     int leftLimit = avr;
