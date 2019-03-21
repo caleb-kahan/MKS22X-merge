@@ -2,6 +2,7 @@ import java.util.Arrays;
 public class Merge{
 public static void mergesort(int[]data){
   mergesort(data,Arrays.copyOf(data,data.length),0, data.length-1);
+  int [] temp = new int[data.length];
   //mergesort(data,0, data.length-1);
 }
 private static void insertionSort(int [] data, int start, int end){
@@ -60,39 +61,41 @@ private static void mergesort(int[]data,int lo,int hi){
     }
   }
   }
-private static void mergesort(int[]data, int [] temp, int lo,int hi){
-  if (hi-lo<3) {
+private static void mergesort(int[] data, int[] temp, int lo, int hi){
+  if (hi-lo<40) {
     insertionSort(data,lo,hi);
+    insertionSort(temp,lo,hi);
+
   }
   else{
     int avr = (lo+hi)/2;
-    mergesort(temp, data, lo,avr);
-    mergesort(temp, data, avr+1,hi);
-    int left =lo;
-    int right =avr+1;
+    mergesort(temp, data, lo, avr);
+    mergesort(temp, data, avr+1, hi);
+    int left = lo;
+    int right = avr+1;
     int leftLimit = avr;
-    int rightLimit =hi;
+    int rightLimit = hi;
     while(left<=leftLimit || right<=rightLimit){
       //Just in case one gets used up
-      if (left>leftLimit){
+      if (left > leftLimit){
         data[right]=temp[right];
         right++;
       }
-      else if (right>rightLimit){
+      else if (right > rightLimit){
         data[left]=temp[left];
         left++;
       }
-      else if (data[left] <= data[right]) {
+      else if (temp[left] <= temp[right]) {
         data[left]=temp[left];
         left++;
       }
-      else if (data[right] < data[left]) {
+      else if (temp[right] < temp[left]) {
         data[right]=temp[right];
         right++;
       }
     }
     for(int i=lo;i<=hi;i++){
-      temp[i]=data[i-lo];
+      temp[i]=data[i];
     }
   }
   }
