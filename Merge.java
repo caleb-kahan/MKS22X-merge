@@ -1,8 +1,12 @@
 import java.util.Arrays;
 public class Merge{
 public static void mergesort(int[]data){
-  mergesort(data,Arrays.copyOf(data,data.length),0, data.length-1);
   int [] temp = new int[data.length];
+  for(int i=0;i<data.length;i++){
+    temp[i]=data[i];
+  }
+  mergesort(data,temp,0, data.length-1);
+
   //mergesort(data,0, data.length-1);
 }
 private static void insertionSort(int [] data, int start, int end){
@@ -78,19 +82,19 @@ private static void mergesort(int[] data, int[] temp, int lo, int hi){
     while(left<=leftLimit || right<=rightLimit){
       //Just in case one gets used up
       if (left > leftLimit){
-        data[right]=temp[right];
+        data[left+right-avr-1]=temp[right];
         right++;
       }
       else if (right > rightLimit){
-        data[left]=temp[left];
+        data[left+right-avr-1]=temp[left];
         left++;
       }
       else if (temp[left] <= temp[right]) {
-        data[left]=temp[left];
+        data[left+right-avr-1]=temp[left];
         left++;
       }
       else if (temp[right] < temp[left]) {
-        data[right]=temp[right];
+        data[left+right-avr-1]=temp[right];
         right++;
       }
     }
