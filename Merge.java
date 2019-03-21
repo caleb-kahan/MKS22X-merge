@@ -61,7 +61,7 @@ private static void mergesort(int[]data,int lo,int hi){
   }
   }
 private static void mergesort(int[]data, int [] temp, int lo,int hi){
-  if (hi-lo<40) {
+  if (hi-lo<3) {
     insertionSort(data,lo,hi);
   }
   else{
