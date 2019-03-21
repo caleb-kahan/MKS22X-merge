@@ -35,15 +35,13 @@ private static void mergesort(int[]data,int lo,int hi){
     int [] merger = new int[hi-lo+1];
     int left =lo;
     int right =avr+1;
-    int leftLimit = avr;
-    int rightLimit =hi;
-    while(left<=leftLimit || right<=rightLimit){
+    while(left<=avr || right<=hi){
       //Just in case one gets used up
-      if (left>leftLimit){
+      if (left>avr){
         merger[left+right-lo-avr-1]=data[right];
         right++;
       }
-      else if (right>rightLimit){
+      else if (right>hi){
         merger[left+right-lo-avr-1]=data[left];
         left++;
       }
@@ -71,18 +69,23 @@ private static void mergesort(int[] data, int[] temp, int lo, int hi){
     mergesort(temp, data, avr+1, hi);
     int left = lo;
     int right = avr+1;
-    int leftLimit = avr;
-    int rightLimit = hi;
-    while(left<=leftLimit || right<=rightLimit){
+    int valLeft = temp[left];
+    int valRight = temp[right];
+    while(left<=avr || right<=hi){
       //Just in case one gets used up
-      if (right>rightLimit || left<=leftLimit && temp[left] <= temp[right]) {
-        data[left+right-avr-1]=temp[left];
+      
+      if (right>hi || left<=avr && valLeft <= valRight) {
+        data[left+right-avr-1]=valLeft;
         left++;
+	if(left<=avr) valLeft = temp[left];
+
       }
       else {
-        data[left+right-avr-1]=temp[right];
+        data[left+right-avr-1]=valRight;
         right++;
+	if(right<=hi) valRight = temp[right];
       }
+
     }
   }
   }
