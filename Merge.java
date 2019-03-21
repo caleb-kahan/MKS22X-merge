@@ -1,11 +1,7 @@
 import java.util.Arrays;
 public class Merge{
 public static void mergesort(int[]data){
-  int [] temp = new int[data.length];
-  for(int i=0;i<data.length;i++){
-    temp[i]=data[i];
-  }
-  mergesort(data,temp,0, data.length-1);
+  mergesort(data,Arrays.copyOf(data,data.length),0, data.length-1);
 
   //mergesort(data,0, data.length-1);
 }
@@ -68,8 +64,6 @@ private static void mergesort(int[]data,int lo,int hi){
 private static void mergesort(int[] data, int[] temp, int lo, int hi){
   if (hi-lo<40) {
     insertionSort(data,lo,hi);
-    insertionSort(temp,lo,hi);
-
   }
   else{
     int avr = (lo+hi)/2;
@@ -97,9 +91,6 @@ private static void mergesort(int[] data, int[] temp, int lo, int hi){
         data[left+right-avr-1]=temp[right];
         right++;
       }
-    }
-    for(int i=lo;i<=hi;i++){
-      temp[i]=data[i];
     }
   }
   }
