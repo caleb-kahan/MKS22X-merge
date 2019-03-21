@@ -62,7 +62,7 @@ private static void mergesort(int[]data,int lo,int hi){
   }
   }
 private static void mergesort(int[] data, int[] temp, int lo, int hi){
-  if (hi-lo<35) {
+  if (hi-lo<55) {
     insertionSort(data,lo,hi);
   }
   else{
@@ -75,19 +75,11 @@ private static void mergesort(int[] data, int[] temp, int lo, int hi){
     int rightLimit = hi;
     while(left<=leftLimit || right<=rightLimit){
       //Just in case one gets used up
-      if (left > leftLimit){
-        data[left+right-avr-1]=temp[right];
-        right++;
-      }
-      else if (right > rightLimit){
+      if (right>rightLimit || left<=leftLimit && temp[left] <= temp[right]) {
         data[left+right-avr-1]=temp[left];
         left++;
       }
-      else if (temp[left] <= temp[right]) {
-        data[left+right-avr-1]=temp[left];
-        left++;
-      }
-      else if (temp[right] < temp[left]) {
+      else {
         data[left+right-avr-1]=temp[right];
         right++;
       }
